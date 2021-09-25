@@ -5,8 +5,17 @@ var saveButton = document.querySelector(".save-button");
 var currentDay = document.getElementById("current-day");
 var timeRow = document.querySelector(".row")
 var timeRowsAll = document.querySelectorAll(".row");
-var timeRows = Array.prototype.slice.call(timeRowsAll);
-console.log(timeRows);
+var timeRows = [
+  document.getElementById("row-9"),
+  document.getElementById("row-10"),
+  document.getElementById("row-11"),
+  document.getElementById("row-12"),
+  document.getElementById("row-1"),
+  document.getElementById("row-2"),
+  document.getElementById("row-3"),
+  document.getElementById("row-4"),
+  document.getElementById("row-5"),
+]
 
 // display current day
 var currentHour = moment().format("H");
@@ -30,17 +39,17 @@ saveButton.addEventListener("click", function saveInfo() {
 eventNameInput.value = localStorage.getItem("name");
 eventDescriptionInput.value = localStorage.getItem("description");
 
-// set time for each row according to data-time attribute and change background color accordingly
+// set time for each row according to value and change background color accordingly
 function setTimePerRow() {
     for (var i = 0; i < timeRows.length; i++) {
-        var dataTime = timeRows[i].getAttribute("data-time");
-        console.log(dataTime)
-            if (dataTime == currentHour) {
+        var time = timeRows[i].getAttribute("value");
+        console.log(time)
+            if (time == currentHour) {
                 timeRows[i].style.background = "yellow";}
-            else if (dataTime > currentHour) {
+            else if (time > currentHour) {
                 timeRows[i].style.background = "blue";}
-            else if (dataTime < currentHour) {
-                timeRows[i].style.background = "red";};}};
+            else (time < currentHour) 
+                timeRows[i].style.background = "red";};};
             
 
 setTimePerRow();
